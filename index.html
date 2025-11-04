@@ -2,180 +2,42 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- penting untuk mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rekomendasi Lagu & Film Berdasarkan Mood</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      color: #222;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      transition: background 0.8s ease;
-      overflow-x: hidden;
-    }
-
-    h1 {
-      margin-top: 40px;
-      color: white;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      font-size: 1.8em;
-    }
-
-    form {
-      background: #ffffff;
-      border-radius: 15px;
-      padding: 20px 30px;
-      margin: 20px auto;
-      display: inline-block;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      max-width: 400px;
-      width: 90%;
-      text-align: left;
-      animation: fadeIn 0.8s ease-in-out;
-    }
-
-    label {
-      display: block;
-      margin-top: 10px;
-      font-weight: 600;
-    }
-
-    select, button {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      margin-top: 5px;
-      font-size: 1em;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    button {
-      background: #007bff;
-      color: white;
-      border: none;
-      margin-top: 15px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background: #0056b3;
-    }
-
-    .result {
-      text-align: center;
-      margin: 30px auto;
-      padding: 20px;
-      background: #ffffff;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      display: inline-block;
-      animation: fadeIn 0.8s ease-in-out;
-      width: 90%;
-      max-width: 450px;
-    }
-
-    footer {
-      margin-top: 30px;
-      text-align: center;
-      font-size: 0.95em;
-      font-weight: 500;
-      text-shadow: 0px 1px 2px rgba(0,0,0,0.4);
-      transition: color 0.4s ease;
-      padding-bottom: 20px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* 🌐 Responsif untuk HP */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.4em;
-        padding: 0 10px;
-      }
-
-      form {
-        padding: 15px 20px;
-      }
-
-      .result {
-        font-size: 0.95em;
-        padding: 15px;
-      }
-
-      button {
-        font-size: 0.95em;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
   <div class="container">
-    <h1>🎵 MoodMatch: Rekomendasi Lagu & Film 🎬</h1>
+    <h1>Rekomendasi Lagu & Film Berdasarkan Mood</h1>
 
-    <form method="POST" action="/rekomendasi" class="fade-in">
-      <label for="kategori">Pilih Kategori:</label>
-      <select name="kategori" id="kategori" required>
-        <option value="normies" {% if kategori == 'normies' %}selected{% endif %}>A. Normies</option>
-        <option value="kpopers" {% if kategori == 'kpopers' %}selected{% endif %}>B. Kpopers</option>
-        <option value="wibu" {% if kategori == 'wibu' %}selected{% endif %}>C. Wibu</option>
-        <option value="random" {% if kategori == 'random' %}selected{% endif %}>D. Random</option>
+    <form id="moodForm">
+      <label for="mood">Pilih suasana hati:</label>
+      <select id="mood" required>
+        <option value="">-- Pilih Mood --</option>
+        <option value="senang">Senang</option>
+        <option value="sedih">Sedih</option>
+        <option value="marah">Marah</option>
+        <option value="tenang">Tenang</option>
       </select>
 
-      <label for="mood">Pilih Mood Kamu:</label>
-      <select name="mood" id="mood" required>
-        <option value="senang" {% if mood == 'senang' %}selected{% endif %}>A. Senang 😀</option>
-        <option value="sedih" {% if mood == 'sedih' %}selected{% endif %}>B. Sedih 😢</option>
-        <option value="marah" {% if mood == 'marah' %}selected{% endif %}>C. Marah 😠</option>
-        <option value="tenang" {% if mood == 'tenang' %}selected{% endif %}>D. Tenang 😌</option>
+      <label for="kategori">Pilih kategori:</label>
+      <select id="kategori" required>
+        <option value="">-- Pilih Kategori --</option>
+        <option value="normies">Normies</option>
+        <option value="kpopers">Kpopers</option>
+        <option value="wibu">Wibu</option>
       </select>
 
       <button type="submit">Tampilkan Rekomendasi</button>
     </form>
 
-    {% if mood %}
-    <div class="result fade-in" id="result-box">
-      <h2>Mood: <span>{{ mood | capitalize }}</span></h2>
-      <h3>Kategori: <span>{{ kategori | capitalize }}</span></h3>
-      <p><strong>🎧 Lagu:</strong> {{ lagu }}</p>
-      <p><strong>🎥 Film:</strong> {{ film }}</p>
-    </div>
-    {% endif %}
+    <div id="result" class="result"></div>
   </div>
 
-  <footer id="footer">🧠 Dibuat oleh Kelompok 4</footer>
+  <footer>
+    <p>Dibuat oleh Kelompok 4</p>
+  </footer>
 
-  <script>
-    const mood = "{{ mood }}";
-    const body = document.body;
-    const footer = document.getElementById("footer");
-
-    if (mood === "senang") {
-      body.style.background = "linear-gradient(120deg, #ffe259, #ffa751)";
-      footer.style.color = "#f3f3f3";
-    } else if (mood === "sedih") {
-      body.style.background = "linear-gradient(120deg, #667db6, #0082c8, #0082c8, #667db6)";
-      footer.style.color = "#dfe8ff";
-    } else if (mood === "marah") {
-      body.style.background = "linear-gradient(120deg, #ff512f, #dd2476)";
-      footer.style.color = "#fff0f0";
-    } else if (mood === "tenang") {
-      body.style.background = "linear-gradient(120deg, #a8edea, #fed6e3)";
-      footer.style.color = "#555";
-      footer.style.textShadow = "0px 1px 2px rgba(255,255,255,0.5)";
-    } else {
-      body.style.background = "linear-gradient(120deg, #89f7fe, #66a6ff)";
-      footer.style.color = "#e0e0e0";
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
