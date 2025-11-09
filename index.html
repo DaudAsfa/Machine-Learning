@@ -1,55 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VIREON</title>
+  <title>Vireon - Entertainment Finder</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <div class="container">
-    <h1 class="title">🎧 VIREON</h1>
-    <p class="subtitle">Temukan musik & film favoritmu berdasarkan kategori pilihan!</p>
+    <h1 class="title">🎧 Vireon</h1>
+    <p class="subtitle">Temukan musik, film, dan game favoritmu dalam satu klik!</p>
 
     <form id="recommendationForm">
-      <div class="select-group">
-        <label for="category">Pilih Kategori:</label>
-        <select id="category" required>
-          <option value="">-- Pilih Kategori --</option>
-          <option value="music">🎵 Musik</option>
-          <option value="film">🎬 Film</option>
-        </select>
-      </div>
+      <label for="category">Pilih Kategori:</label>
+      <select id="category" required>
+        <option value="" disabled selected>Pilih kategori</option>
+        <option value="music">Music</option>
+        <option value="film">Film</option>
+        <option value="game">Game</option>
+      </select>
 
-      <div class="select-group">
-        <label for="genre">Pilih Jenis:</label>
-        <select id="genre" required>
-          <option value="">-- Pilih Jenis --</option>
-          <option value="indo">Indo</option>
-          <option value="kpop">Kpop</option>
-          <option value="anime">Anime</option>
-          <option value="game">Game</option>
-          <option value="drakor">Drakor</option>
-          <option value="dracin">Dracin</option>
-          <option value="hollywood">Hollywood</option>
-          <option value="tokusatsu">Tokusatsu</option>
-          <option value="kartun">Kartun</option>
-        </select>
-      </div>
+      <label for="genre">Pilih Genre:</label>
+      <select id="genre" required>
+        <option value="" disabled selected>Pilih genre</option>
+      </select>
 
-      <div class="input-group">
-        <label for="keyword">Masukkan Nama Lagu / Film / Penyanyi / Game:</label>
-        <input type="text" id="keyword" placeholder="contoh: Tulus / Naruto / BTS" />
-      </div>
+      <label for="keyword">Masukkan Kata Kunci:</label>
+      <input type="text" id="keyword" placeholder="Nama lagu / film / game..." />
 
-      <button type="submit" class="btn">Dapatkan Rekomendasi</button>
+      <button type="submit">Cari Rekomendasi</button>
     </form>
 
     <div id="result" class="result-box"></div>
-
-    <footer>
-      <p>✨ Dibuat oleh Kelompok 4 ✨</p>
-    </footer>
+    <footer>Dibuat oleh Kelompok 4</footer>
   </div>
 
   <script src="script.js"></script>
