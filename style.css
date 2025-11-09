@@ -1,17 +1,14 @@
-/* 🌌 Tampilan dasar */
 body {
   background-color: #000;
   color: #fff;
   font-family: 'Poppins', sans-serif;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   height: 100vh;
   margin: 0;
 }
 
-/* 🌈 Container utama */
 .container {
   background: rgba(0, 0, 0, 0.85);
   border: 2px solid #00ffff;
@@ -20,9 +17,11 @@ body {
   padding: 30px;
   width: 350px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Judul utama */
 .title {
   color: #00ffff;
   text-shadow: 0 0 20px #00ffff;
@@ -30,21 +29,18 @@ body {
   margin-bottom: 10px;
 }
 
-/* Subjudul */
 .subtitle {
   color: #ccc;
   font-size: 0.95rem;
   margin-bottom: 25px;
 }
 
-/* Label form */
 label {
   display: block;
   margin: 10px 0 5px;
   font-weight: 600;
 }
 
-/* Dropdown dan input */
 select,
 input {
   width: 100%;
@@ -58,7 +54,6 @@ input {
   box-shadow: 0 0 8px #00ffff55 inset;
 }
 
-/* Tombol cari */
 button {
   background: linear-gradient(90deg, #00ffff, #00b3ff);
   color: #000;
@@ -76,7 +71,6 @@ button:hover {
   transform: scale(1.03);
 }
 
-/* Kotak hasil */
 .result-box {
   background: #111;
   border-radius: 10px;
@@ -85,13 +79,12 @@ button:hover {
   box-shadow: 0 0 15px #00ffff33;
 }
 
-/* Footer — ⭐ teks di tengah bawah */
+/* ✅ Footer fix: tetap di bawah container, di tengah */
 footer {
   text-align: center;
-  margin-top: 25px;
-  padding: 10px 0;
   color: #80dfff;
   font-size: 0.9rem;
   text-shadow: 0 0 6px #00ffff55;
-  position: relative;
+  margin-top: 20px;
+  width: 100%;
 }
