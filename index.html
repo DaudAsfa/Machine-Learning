@@ -1,42 +1,56 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rekomendasi Lagu & Film Berdasarkan Mood</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIREON</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Rekomendasi Lagu & Film Berdasarkan Mood</h1>
+    <h1 class="title">🎧 VIREON</h1>
+    <p class="subtitle">Temukan musik & film favoritmu berdasarkan kategori pilihan!</p>
 
-    <form id="moodForm">
-      <label for="mood">Pilih suasana hati:</label>
-      <select id="mood" required>
-        <option value="">-- Pilih Mood --</option>
-        <option value="senang">Senang</option>
-        <option value="sedih">Sedih</option>
-        <option value="marah">Marah</option>
-        <option value="tenang">Tenang</option>
-      </select>
+    <form id="recommendationForm">
+      <div class="select-group">
+        <label for="category">Pilih Kategori:</label>
+        <select id="category" required>
+          <option value="">-- Pilih Kategori --</option>
+          <option value="music">🎵 Musik</option>
+          <option value="film">🎬 Film</option>
+        </select>
+      </div>
 
-      <label for="kategori">Pilih kategori:</label>
-      <select id="kategori" required>
-        <option value="">-- Pilih Kategori --</option>
-        <option value="normies">Normies</option>
-        <option value="kpopers">Kpopers</option>
-        <option value="wibu">Wibu</option>
-      </select>
+      <div class="select-group">
+        <label for="genre">Pilih Jenis:</label>
+        <select id="genre" required>
+          <option value="">-- Pilih Jenis --</option>
+          <option value="indo">Indo</option>
+          <option value="kpop">Kpop</option>
+          <option value="anime">Anime</option>
+          <option value="game">Game</option>
+          <option value="drakor">Drakor</option>
+          <option value="dracin">Dracin</option>
+          <option value="hollywood">Hollywood</option>
+          <option value="tokusatsu">Tokusatsu</option>
+          <option value="kartun">Kartun</option>
+        </select>
+      </div>
 
-      <button type="submit">Tampilkan Rekomendasi</button>
+      <div class="input-group">
+        <label for="keyword">Masukkan Nama Lagu / Film / Penyanyi / Game:</label>
+        <input type="text" id="keyword" placeholder="contoh: Tulus / Naruto / BTS" />
+      </div>
+
+      <button type="submit" class="btn">Dapatkan Rekomendasi</button>
     </form>
 
-    <div id="result" class="result"></div>
-  </div>
+    <div id="result" class="result-box"></div>
 
-  <footer>
-    <p>Dibuat oleh Kelompok 4</p>
-  </footer>
+    <footer>
+      <p>✨ Dibuat oleh Kelompok 4 ✨</p>
+    </footer>
+  </div>
 
   <script src="script.js"></script>
 </body>
