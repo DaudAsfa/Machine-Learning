@@ -3,39 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vireon - Entertainment Finder</title>
+  <title>VIREON</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
   <div class="container">
-    <h1 class="title">🎧 Vireon</h1>
-    <p class="subtitle">Temukan musik, film, dan game favoritmu dalam satu klik!</p>
+    <h1 class="title">VIREON</h1>
+    <p class="subtitle">Temukan rekomendasi musik, film, dan game favoritmu!</p>
 
     <form id="recommendationForm">
-      <label for="category">Pilih Kategori:</label>
+      <label for="category">Pilih kategori:</label>
       <select id="category" required>
         <option value="" disabled selected>Pilih kategori</option>
-        <option value="music">Music</option>
-        <option value="film">Film</option>
-        <option value="game">Game</option>
+        <option value="music">🎵 Musik</option>
+        <option value="film">🎬 Film</option>
+        <option value="game">🎮 Game</option>
       </select>
 
-      <label for="genre">Pilih Genre:</label>
+      <label for="genre">Pilih genre:</label>
       <select id="genre" required>
         <option value="" disabled selected>Pilih genre</option>
       </select>
 
-      <label for="keyword">Masukkan Kata Kunci:</label>
-      <input type="text" id="keyword" placeholder="Nama lagu / film / game..." />
+      <label for="keyword">Masukkan judul, artis, atau game (opsional):</label>
+      <input type="text" id="keyword" placeholder="Contoh: Naruto, IU, Genshin Impact" />
 
       <button type="submit">Cari Rekomendasi</button>
     </form>
 
     <div id="result" class="result-box"></div>
-    <footer>Dibuat oleh Kelompok 4</footer>
   </div>
 
+  <footer>
+    <p>Dibuat oleh Kelompok 4</p>
+  </footer>
+
+  <!-- pastikan path JS sesuai -->
   <script src="script.js"></script>
 </body>
 </html>
