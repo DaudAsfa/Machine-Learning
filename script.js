@@ -55,9 +55,17 @@ document.addEventListener("DOMContentLoaded", function () {
           <a href="https://www.justwatch.com/search?q=${encodeURIComponent(keyword)}" target="_blank">${keyword}</a>
         `;
       } else {
+        // fallback khusus untuk genre film
+        const filmLinks = {
+          anime: "https://myanimelist.net/anime.php?q=",
+          drakor: "https://www.viu.com/ott/id/id/all/search?q=",
+          dracin: "https://www.iq.com/search?query=",
+          indo: "https://www.hotstar.com/id/search?q="
+        };
+        const link = filmLinks[genre] || "https://www.justwatch.com/search?q=";
         resultText = `
           🍿 Film populer dari kategori ${genre.toUpperCase()} — 
-          <a href="https://www.justwatch.com/search?q=${encodeURIComponent(genre)}" target="_blank">Lihat di JustWatch</a>
+          <a href="${link}${encodeURIComponent(genre)}" target="_blank">Lihat di situs terkait</a>
         `;
       }
     }
@@ -77,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     else {
-      resultText = "⚠️ Silakan pilih kategori dan jenis terlebih dahulu.";
+      resultText = "⚠️ Silakan pilih kategori dan genre terlebih dahulu.";
     }
 
     resultBox.innerHTML = resultText;
