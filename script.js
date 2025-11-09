@@ -1,50 +1,85 @@
-document.getElementById("recommendationForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const category = document.getElementById("category").value;
-  const genre = document.getElementById("genre").value;
-  const keyword = document.getElementById("keyword").value.trim().toLowerCase();
+document.addEventListener("DOMContentLoaded", function () {
+  const categorySelect = document.getElementById("category");
+  const genreSelect = document.getElementById("genre");
+  const form = document.getElementById("recommendationForm");
   const resultBox = document.getElementById("result");
 
-  let resultText = "";
+  const genreOptions = {
+    music: ["Indo", "Kpop", "Anime", "Game"],
+    film: ["Anime", "Drakor", "Dracin", "Indo"],
+    game: ["Action", "Adventure", "Strategy", "RPG", "Horror"]
+  };
 
-  // === Jika kategori MUSIK ===
-  if (category === "music") {
-    if (keyword) {
-      // Jika user mengetik kata kunci
-      resultText = `
-        🎵 Hasil pencarian di Spotify untuk: 
-        <a href="https://open.spotify.com/search/${encodeURIComponent(keyword)}" target="_blank">${keyword}</a>
-      `;
-    } else {
-      // Jika user hanya memilih genre
-      resultText = `
-        🎧 Lagu populer di kategori ${genre.toUpperCase()} — 
-        <a href="https://open.spotify.com/search/${encodeURIComponent(genre)}" target="_blank">Lihat di Spotify</a>
-      `;
+  // Update daftar genre sesuai kategori
+  categorySelect.addEventListener("change", () => {
+    const selectedCategory = categorySelect.value;
+    genreSelect.innerHTML = '<option value="" disabled selected>Pilih genre</option>';
+
+    if (genreOptions[selectedCategory]) {
+      genreOptions[selectedCategory].forEach((g) => {
+        const opt = document.createElement("option");
+        opt.value = g.toLowerCase();
+        opt.textContent = g;
+        genreSelect.appendChild(opt);
+      });
     }
-  }
+  });
 
-  // === Jika kategori FILM ===
-  else if (category === "film") {
-    if (keyword) {
-      resultText = `
-        🎬 Hasil pencarian film untuk: 
-        <a href="https://www.justwatch.com/id/search?q=${encodeURIComponent(keyword)}" target="_blank">${keyword}</a>
-      `;
-    } else {
-      resultText = `
-        🍿 Film populer dari kategori ${genre.toUpperCase()} — 
-        <a href="https://www.justwatch.com/id/search?q=${encodeURIComponent(genre)}" target="_blank">Lihat di JustWatch</a>
-      `;
+  // Saat form dikirim
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const category = categorySelect.value;
+    const genre = genreSelect.value;
+    const keyword = document.getElementById("keyword").value.trim().toLowerCase();
+    let resultText = "";
+
+    if (category === "music") {
+      if (keyword) {
+        resultText = `
+          🎵 Hasil pencarian musik untuk: 
+          <a href="https://open.spotify.com/search/${encodeURIComponent(keyword)}" target="_blank">${keyword}</a>
+        `;
+      } else {
+        resultText = `
+          🎧 Lagu populer dari kategori ${genre.toUpperCase()} — 
+          <a href="https://open.spotify.com/search/${encodeURIComponent(genre)}" target="_blank">Lihat di Spotify</a>
+        `;
+      }
     }
-  }
 
-  // === Jika belum memilih ===
-  else {
-    resultText = "⚠️ Silakan pilih kategori dan jenis terlebih dahulu.";
-  }
+    else if (category === "film") {
+      if (keyword) {
+        resultText = `
+          🎬 Hasil pencarian film untuk: 
+          <a href="https://www.justwatch.com/search?q=${encodeURIComponent(keyword)}" target="_blank">${keyword}</a>
+        `;
+      } else {
+        resultText = `
+          🍿 Film populer dari kategori ${genre.toUpperCase()} — 
+          <a href="https://www.justwatch.com/search?q=${encodeURIComponent(genre)}" target="_blank">Lihat di JustWatch</a>
+        `;
+      }
+    }
 
-  // Tampilkan hasil
-  resultBox.innerHTML = resultText;
+    else if (category === "game") {
+      if (keyword) {
+        resultText = `
+          🎮 Hasil pencarian game untuk: 
+          <a href="https://store.steampowered.com/search/?term=${encodeURIComponent(keyword)}" target="_blank">${keyword}</a>
+        `;
+      } else {
+        resultText = `
+          🕹️ Game populer genre ${genre.toUpperCase()} — 
+          <a href="https://store.steampowered.com/search/?term=${encodeURIComponent(genre)}" target="_blank">Lihat di Steam</a>
+        `;
+      }
+    }
+
+    else {
+      resultText = "⚠️ Silakan pilih kategori dan jenis terlebih dahulu.";
+    }
+
+    resultBox.innerHTML = resultText;
+  });
 });
