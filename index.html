@@ -13,30 +13,29 @@
 
     <form id="recommendationForm">
       <label for="category">Pilih kategori:</label>
-      <select id="category" required>
+      <select id="category">
         <option value="" disabled selected>Pilih kategori</option>
-        <option value="music">🎵 Musik</option>
+        <option value="music">🎵 Music</option>
         <option value="film">🎬 Film</option>
         <option value="game">🎮 Game</option>
       </select>
 
       <label for="genre">Pilih genre:</label>
-      <select id="genre" required>
+      <select id="genre">
         <option value="" disabled selected>Pilih genre</option>
       </select>
 
       <label for="keyword">Masukkan judul, artis, atau game (opsional):</label>
-      <input type="text" id="keyword" placeholder="Contoh: Naruto, IU, Genshin Impact" />
+      <input id="keyword" type="text" placeholder="Contoh: Naruto, IU, Genshin Impact" />
 
       <button type="submit">Cari Rekomendasi</button>
     </form>
 
     <div id="result" class="result-box"></div>
-  </div>
 
-  <footer>
-    <p>Dibuat oleh Kelompok 4</p>
-  </footer>
+    <!-- Footer sekarang di dalam container -->
+    <footer>💡 Dibuat oleh <b>Kelompok 4</b></footer>
+  </div>
 
   <script src="script.js"></script>
 </body>
