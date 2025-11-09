@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
     game: ["Action", "Adventure", "Strategy", "RPG", "Horror"]
   };
 
-  // Update daftar genre sesuai kategori
   categorySelect.addEventListener("change", () => {
     const selectedCategory = categorySelect.value;
     genreSelect.innerHTML = '<option value="" disabled selected>Pilih genre</option>';
@@ -25,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Saat form dikirim
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -49,20 +47,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     else if (category === "film") {
+      let link = "https://www.google.com/search?q=";
+
+      if (genre === "anime") link = "https://myanimelist.net/anime.php?q=";
+      else if (genre === "drakor") link = "https://www.viu.com/ott/id/id/all/search?q=";
+      else if (genre === "dracin") link = "https://www.iq.com/search?query=";
+      else if (genre === "indo") link = "https://www.google.com/search?q=film+indonesia+";
+
       if (keyword) {
         resultText = `
           🎬 Hasil pencarian film untuk: 
-          <a href="https://www.justwatch.com/search?q=${encodeURIComponent(keyword)}" target="_blank">${keyword}</a>
+          <a href="${link}${encodeURIComponent(keyword)}" target="_blank">${keyword}</a>
         `;
       } else {
-        // fallback khusus untuk genre film
-        const filmLinks = {
-          anime: "https://myanimelist.net/anime.php?q=",
-          drakor: "https://www.viu.com/ott/id/id/all/search?q=",
-          dracin: "https://www.iq.com/search?query=",
-          indo: "https://www.hotstar.com/id/search?q="
-        };
-        const link = filmLinks[genre] || "https://www.justwatch.com/search?q=";
         resultText = `
           🍿 Film populer dari kategori ${genre.toUpperCase()} — 
           <a href="${link}${encodeURIComponent(genre)}" target="_blank">Lihat di situs terkait</a>
