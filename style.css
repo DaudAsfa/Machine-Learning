@@ -1,64 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to bottom right, #a2c2e2, #ffffff);
-  color: #222;
   margin: 0;
-  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #0a0a0f 0%, #000 100%);
+  color: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-  max-width: 600px;
-  margin: 50px auto;
-  background: white;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-}
-
-h1 {
   text-align: center;
-  color: #333;
+  background: rgba(20, 20, 30, 0.9);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+  width: 90%;
+  max-width: 500px;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.title {
+  font-size: 2.5rem;
+  color: #00ffff;
+  text-shadow: 0 0 15px #00ffff;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #bbb;
+  margin-bottom: 25px;
+}
+
+.select-group, .input-group {
+  text-align: left;
+  margin-bottom: 20px;
 }
 
 label {
-  font-weight: bold;
+  display: block;
+  color: #a3f7ff;
+  margin-bottom: 8px;
 }
 
-select, button {
+select, input {
+  width: 100%;
   padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #1a1a25;
+  color: #fff;
   font-size: 1rem;
 }
 
-button {
-  background-color: #4CAF50;
-  color: white;
+.btn {
+  width: 100%;
+  background: linear-gradient(90deg, #00ffff, #00aaff);
+  color: #000;
+  font-weight: bold;
   border: none;
+  padding: 12px;
+  border-radius: 12px;
   cursor: pointer;
   transition: 0.3s;
 }
 
-button:hover {
-  background-color: #3b8c41;
+.btn:hover {
+  background: linear-gradient(90deg, #00ccff, #0077ff);
+  box-shadow: 0 0 20px #00ffff;
 }
 
-.result {
-  text-align: center;
-  margin-top: 20px;
+.result-box {
+  margin-top: 25px;
   font-size: 1.1rem;
+  color: #fff;
+  text-align: center;
+}
+
+.result-box a {
+  color: #00ffff;
+  text-decoration: none;
   font-weight: bold;
+  transition: 0.2s;
+}
+
+.result-box a:hover {
+  text-shadow: 0 0 8px #00ffff;
 }
 
 footer {
-  text-align: center;
-  color: #555;
-  font-size: 0.9rem;
-  margin-top: 30px;
+  margin-top: 35px;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+  .container {
+    padding: 20px;
+  }
 }
